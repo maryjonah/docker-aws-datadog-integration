@@ -82,7 +82,8 @@ resource "aws_instance" "flask" {
     user_data = <<-EOF
     #!/bin/bash
     sudo apt update -y
-    sudo yum install docker -y
+    sudo apt install python3-venv -y
+    sudo apt install docker.io
     sudo systemctl start docker
     sudo usermod -a -G docker ec2-user
     docker run -d --name sca-docker-datadog jonahmary17/mary-flask:latest
